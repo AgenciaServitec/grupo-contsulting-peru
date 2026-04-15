@@ -1,0 +1,144 @@
+---
+const navLinks = [
+    { name: "Inicio", href: "/#" },
+    { name: "Nosotros", href: "/#nosotros" },
+    { name: "Servicios", href: "/#servicios" },
+    { name: "Sedes", href: "/#sedes" },
+    { name: "Contacto", href: "/#contacto" },
+];
+
+const services = [
+    "Contable", "Legal", "Marketing", "Informático", "Inmobiliario"
+];
+---
+
+<header
+        id="site-header"
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+>
+    <div id="header-container" class="transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+
+            <a href="/">
+                <div class="flex flex-col">
+                    <span class="text-primary-dark  leading-none text-xl">
+                        CONTSULTING<span class="text-secondary">PERÚ</span>
+                    </span>
+                    <span class="text-[9px] text-gray-500 font-bold mt-1">
+                        Grupo Empresarial Multiactividad
+                    </span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-10">
+                {navLinks.map(link => (
+                        <a href={link.href} class="text-[13px] font-bold text-primary-dark/80 hover:text-secondary transition-colors relative group">
+                            {link.name}
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full"></span>
+                        </a>
+                ))}
+            </nav>
+
+            <div class="hidden md:flex items-center gap-5">
+                <a href="tel:949730886" class="text-xs font-bold text-primary hover:text-primary transition-colors">
+                    949 730 886
+                </a>
+                <a
+                        href="#contacto"
+                        class="bg-primary text-white px-7 py-3 rounded-full text-[11px]  hover:bg-primary hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95"
+                >
+                    Cotizar Servicio
+                </a>
+            </div>
+
+            <button
+                    id="mobile-menu-btn"
+                    class="lg:hidden p-2 text-primary-dark"
+                    aria-label="Menú"
+            >
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div
+        id="mobile-menu"
+        class="fixed inset-0 z-40 bg-white translate-x-full transition-transform duration-500 ease-in-out lg:hidden"
+>
+    <div class="flex flex-col h-full px-8 pt-24 pb-12">
+        <nav class="flex flex-col gap-6">
+            {navLinks.map(link => (
+                    <a href={link.href} class="text-3xl  text-primary-dark hover:text-secondary transition-colors mobile-link">
+                        {link.name}
+                    </a>
+            ))}
+        </nav>
+
+        <div class="mt-auto space-y-8">
+            <div class="grid grid-cols-2 gap-4">
+                {services.map(service => (
+                        <span class="text-[10px] font-bold text-gray-400 border-l border-secondary pl-2">
+                        {service}
+                    </span>
+                ))}
+            </div>
+            <a href="#contacto" class="block text-center py-5 bg-secondary text-primary-dark  rounded-2xl mobile-link">
+                Solicitar Asesoría
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const header = document.getElementById('site-header');
+    const container = document.getElementById('header-container');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const menuIcon = document.getElementById('menu-icon');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+
+        if (currentScroll > 50) {
+            container.classList.add('bg-white/90', 'backdrop-blur-md', 'py-3', 'shadow-sm');
+            container.classList.remove('py-4');
+        } else {
+            container.classList.remove('bg-white/90', 'backdrop-blur-md', 'py-3', 'shadow-sm');
+            container.classList.add('py-4');
+        }
+
+        if (currentScroll > lastScroll && currentScroll > 200) {
+            header.classList.add('-translate-y-full');
+        } else {
+            header.classList.remove('-translate-y-full');
+        }
+        lastScroll = currentScroll;
+    });
+
+    let isMenuOpen = false;
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        mobileMenu.classList.toggle('translate-x-full');
+        document.body.classList.toggle('overflow-hidden');
+        menuIcon.setAttribute('d', isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16');
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMenu);
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if(isMenuOpen) toggleMenu();
+        });
+    });
+</script>
+
+<style>
+    header {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+</style>
