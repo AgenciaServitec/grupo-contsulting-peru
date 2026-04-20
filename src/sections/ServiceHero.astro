@@ -1,0 +1,50 @@
+---
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<section class="relative w-full min-h-[85vh] lg:min-h-[90vh] bg-background-soft flex items-center overflow-hidden pt-20">
+
+    <div class="absolute inset-0 z-0 pointer-events-none flex justify-center items-center overflow-hidden">
+        <svg class="absolute w-[150%] h-[150%] max-w-none opacity-90" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M 15 95 L 85 15" stroke="var(--color-brand-deep)" stroke-width="0.15" fill="none" vector-effect="non-scaling-stroke" />
+            <path d="M 82 15 L 85 15 L 85 18" stroke="var(--color-brand-deep)" stroke-width="0.15" fill="none" vector-effect="non-scaling-stroke" />
+        </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10 flex flex-col justify-between h-full py-12 lg:py-20">
+
+        <div class="w-full mb-16 lg:mb-24">
+            <a href="/#servicios" class="inline-flex items-center gap-2 text-[11px] font-extrabold tracking-widest uppercase text-brand-deep hover:text-brand-base transition-colors group">
+                <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                Volver
+            </a>
+        </div>
+
+        <div class="w-full flex justify-end">
+            <div class="w-full lg:w-[55%] flex flex-col items-start text-left">
+                <h1 class="text-5xl md:text-6xl lg:text-[4.5rem] font-semibold text-brand-deep leading-[1.1] mb-8 tracking-tight">
+                    {title}
+                </h1>
+
+                <p class="text-brand-deep/85 text-lg lg:text-[1.1rem] leading-relaxed font-medium mb-12 max-w-2xl">
+                    {description}
+                </p>
+
+                <a href="/#contacto" class="inline-flex items-center gap-3 border border-brand-deep text-brand-deep px-6 py-3 text-xs font-extrabold tracking-widest uppercase hover:bg-brand-deep hover:text-white transition-all group">
+                    SOLICITAR SERVICIO
+                    <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>

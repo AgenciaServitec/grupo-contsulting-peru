@@ -1,0 +1,39 @@
+---
+import { servicesData } from "../../data-list/services";
+import Layout from "../../layouts/Layout.astro";
+import ServiceHero from "../../sections/ServiceHero.astro";
+import ServiceDetails from "../../sections/ServiceDetails.astro";
+import OtherServices from "../../sections/OtherServices.astro";
+
+export function getStaticPaths() {
+    return servicesData.map((service) => ({
+        params: { servicio: service.slug },
+        props: { service, allServices: servicesData },
+    }));
+}
+
+const { service, allServices } = Astro.props;
+
+const otherServices = allServices.filter(s => s.slug !== service.slug);
+---
+
+<Layout
+        title={`${service.title} | Grupo Contsulting Perú`}
+        description={service.description}
+>
+    <ServiceHero
+            title={service.title}
+            description={service.description}
+    />
+
+    <ServiceDetails
+            image={service.image}
+            title={service.title}
+            detailsIntro={service.detailsIntro}
+            features={service.features}
+    />
+
+    <OtherServices
+            otherServices={otherServices}
+    />
+</Layout>

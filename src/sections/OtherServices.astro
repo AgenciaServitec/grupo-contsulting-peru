@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+    otherServices: any[];
+}
+
+const { otherServices } = Astro.props;
+---
+
+<section class="py-20 lg:py-40 bg-gray-50 border-t border-gray-200 overflow-hidden">
+    <div class="max-w-[1440px] mx-auto">
+
+        <div class="px-6 lg:px-20 mb-16 lg:mb-32">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-4xl lg:text-7xl font-semibold text-brand-deep tracking-tight">
+                        Otros servicios
+                    </h2>
+                </div>
+                <div class="hidden lg:block pb-2">
+                    <div class="w-24 h-[1px] bg-brand-deep/20"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative border-b border-gray-200/60 lg:border-b-0">
+
+            {otherServices.map((item, index) => (
+                    <div class={`group relative flex flex-col items-center p-10 lg:p-20 transition-colors duration-700 hover:bg-white
+                    border-t border-gray-200/60 lg:border-b
+                    ${index % 2 !== 0 ? 'md:border-l' : ''}
+                    ${index % 3 !== 0 ? 'lg:border-l' : ''}
+                `}>
+
+                        <div class="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 mb-10 lg:mb-12">
+                            <div class="absolute inset-0 border border-brand-deep/5 rounded-full scale-110 group-hover:scale-105 transition-transform duration-1000"></div>
+
+                            <div class="relative w-full h-full rounded-full overflow-hidden shadow-2xl border-[5px] lg:border-[8px] border-white z-10 bg-gray-200">
+                                <a href={`/servicios/${item.slug}`} class="block w-full h-full">
+                                    <Image
+                                            src={item.image}
+                                            alt={item.title}
+                                            class="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0"
+                                            loading="lazy"
+                                    />
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="text-center relative z-10">
+                            <h3 class="text-xl lg:text-2xl font-bold text-brand-deep mb-5 lg:mb-6 leading-tight group-hover:text-accent-ocean transition-colors">
+                                {item.title}
+                            </h3>
+
+                            <a href={`/servicios/${item.slug}`} class="inline-flex items-center gap-2 text-[10px] lg:text-[11px] font-extrabold tracking-[0.2em] text-brand-deep uppercase group/link">
+                            <span class="relative">
+                                Ver Detalles
+                                <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-deep transition-all duration-300 group-hover/link:w-full"></span>
+                            </span>
+                                <svg class="w-4 h-4 transition-transform duration-300 -rotate-45 group-hover/link:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    @media (min-width: 1024px) {
+        .grid > div:nth-last-child(-n+3) {
+            border-bottom: none;
+        }
+    }
+</style>

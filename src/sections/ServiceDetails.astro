@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+    image: string;
+    title: string;
+    detailsIntro: string;
+    features: string[];
+}
+
+const { image, title, detailsIntro, features } = Astro.props;
+---
+
+<section class="w-full bg-gray-50 border-t border-gray-200 overflow-hidden">
+    <div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row min-h-[700px]">
+
+        <div class="w-full lg:w-1/2 p-10 lg:p-24 border-b lg:border-b-0 lg:border-r border-gray-200 flex items-center justify-center bg-gray-50/50 relative group">
+
+            <div class="absolute w-[80%] h-[80%] border border-brand-deep/5 rounded-full scale-110 group-hover:scale-105 transition-transform duration-1000"></div>
+
+            <div class="relative w-full max-w-[520px] aspect-square rounded-full overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,48,62,0.2)] border-[12px] border-white z-10">
+                <Image
+                        src={image}
+                        alt={title}
+                        class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-brand-deep/5 mix-blend-multiply"></div>
+            </div>
+
+        </div>
+
+        <div class="w-full lg:w-1/2 p-10 lg:p-24 flex flex-col justify-center bg-gray-50">
+
+            <div class="relative mb-12">
+                <p class="text-brand-deep text-lg lg:text-[1.2rem] leading-relaxed font-medium relative z-10 italic lg:not-italic">
+                    {detailsIntro}
+                </p>
+                <div class="absolute -top-6 -left-4 text-brand-deep/10 text-6xl font-serif">“</div>
+            </div>
+
+            <div class="flex items-center gap-3 mb-8">
+                <div class="h-[1px] w-8 bg-accent-ocean"></div>
+                <h3 class="text-brand-deep font-bold text-xs tracking-[0.3em] uppercase">Detalles del servicio</h3>
+            </div>
+
+            <ul class="flex flex-col gap-6">
+                {features.map((feature: string) => (
+                        <li class="flex items-start gap-5 group/item">
+                            <div class="flex items-center justify-center shrink-0 mt-1">
+                                <svg class="w-5 h-5 text-brand-deep transition-transform group-hover/item:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span class="text-brand-deep/80 text-[1.05rem] leading-snug font-medium group-hover/item:text-brand-deep transition-colors">
+                            {feature.replace(/\+\]/g, '')}
+                        </span>
+                        </li>
+                ))}
+            </ul>
+
+        </div>
+
+    </div>
+</section>

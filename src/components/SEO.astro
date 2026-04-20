@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+
 interface Props {
     title: string;
     description: string;
@@ -10,12 +13,13 @@ interface Props {
 const {
     title,
     description,
-    image = '/og-image-default.jpg',
+    image = '/og-image.jpg',
     type = 'website',
     noindex = false
 } = Astro.props;
 
 const siteName = "Grupo Contsulting Perú";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <meta charset="utf-8" />
@@ -23,28 +27,33 @@ const siteName = "Grupo Contsulting Perú";
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
+<link rel="canonical" href={canonicalURL} />
+
 <title>{title} | {siteName}</title>
 <meta name="title" content={`${title} | ${siteName}`} />
 <meta name="description" content={description} />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 
 <meta property="og:type" content={type} />
+<meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="es_PE" />
 <meta property="og:site_name" content={siteName} />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <meta name="geo.region" content="PE-LMA" />
-<meta name="geo.placename" content="Lima, Perú" />
-<meta name="geo.position" content="-12.1843;-77.0211" />
-<meta name="ICBM" content="-12.1843, -77.0211" />
+<meta name="geo.placename" content="Chorrillos, Lima, Perú" />
+<meta name="geo.position" content="-12.1843;-77.0211" /> <meta name="ICBM" content="-12.1843, -77.0211" />
 
-<meta name="keywords" content="asesoría contable Perú, consultoría legal empresarial, outsourcing administrativo, marketing digital empresas, gestión inmobiliaria, informática para empresas, Grupo Contsulting Perú" />
+<meta name="keywords" content="asesoría contable Perú, consultoría legal empresarial, outsourcing administrativo, marketing digital empresas, gestión inmobiliaria Lima, servicios informáticos corporativos, Grupo Contsulting Perú" />
 
 <meta name="theme-color" content="#004687" />

@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import { Carousel2 } from "../assets";
+---
+
+<section id="nosotros" class="py-16 lg:py-24 bg-brand-deep relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(0,126,169,0.08)_0%,transparent_60%)] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
+            <div class="w-full lg:w-[45%]">
+                <div class="relative aspect-video lg:aspect-[4/4.5] group overflow-hidden bg-brand-dark rounded-sm shadow-2xl">
+                    <Image
+                            src={Carousel2}
+                            alt="Consultoría Grupo Contsulting Perú"
+                            class="w-full h-full object-cover grayscale opacity-40 transition-all duration-[2s] group-hover:scale-105 group-hover:opacity-60 group-hover:grayscale-0"
+                    />
+
+                    <div class="absolute top-0 left-0 bg-brand-base text-brand-muted p-6 lg:p-10">
+                        <span class="block text-4xl lg:text-5xl font-light tracking-tighter leading-none mb-1">+10</span>
+                        <span class="block text-[9px] font-bold uppercase tracking-[0.2em] leading-tight opacity-80">
+                            Años de <br/> trayectoria
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-[55%] flex flex-col justify-center">
+                <div class="max-w-xl">
+                    <div class="inline-flex items-center gap-3 mb-6">
+                        <span class="text-accent-glow font-bold tracking-[0.4em] uppercase text-[10px]">Nosotros</span>
+                        <div class="h-[1px] w-8 bg-accent-glow/30"></div>
+                    </div>
+
+                    <h2 class="text-4xl lg:text-6xl font-semibold text-white leading-[1.1] mb-8 tracking-tight">
+                        Aliados de su <br/>
+                        proyección.
+                    </h2>
+
+                    <div class="space-y-6 text-gray-300">
+                        <p class="text-lg lg:text-xl font-medium leading-relaxed text-white/90">
+                            Somos un grupo empresarial con sede en Lima y alcance nacional, respaldado por profesionales altamente calificados.
+                        </p>
+
+                        <div class="h-[1px] w-16 bg-white/10"></div>
+
+                        <p class="text-sm lg:text-base leading-relaxed font-light">
+                            Bajo modalidades flexibles de <span class="text-white font-medium">outsourcing o in-house</span>, aplicamos una metodología de tiempos óptimos para asegurar información oportuna en su toma de decisiones.
+                        </p>
+
+                        <p class="text-sm lg:text-base leading-relaxed font-light">
+                            En <strong class="text-white font-medium">Grupo Contsulting Perú</strong>, transformamos desafíos operativos en oportunidades de eficiencia y rentabilidad.
+                        </p>
+
+                        <div class="pt-6">
+                            <a href="#contacto" class="inline-flex items-center gap-4 text-[10px] font-bold tracking-[0.3em] uppercase text-accent-glow group">
+                                Iniciar Consultoría
+                                <span class="w-10 h-[1px] bg-accent-glow transition-all duration-500 group-hover:w-16"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

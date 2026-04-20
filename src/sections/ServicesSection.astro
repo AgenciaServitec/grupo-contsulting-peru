@@ -1,0 +1,178 @@
+---
+import { Image } from 'astro:assets';
+// Importación de activos locales
+import { Contable, Administrativo, Legal, Marketing, Informatico, Inmobiliario } from "../assets";
+
+const services = [
+    {
+        id: "contable",
+        title: "Servicio Contable",
+        description: "Gestión contable integral que garantiza orden financiero y cumplimiento tributario.",
+        image: Contable,
+        slug: "contable"
+    },
+    {
+        id: "administrativo",
+        title: "Servicio Administrativo",
+        description: "Soporte administrativo integral para procesos internos eficientes y cumplimiento normativo",
+        image: Administrativo,
+        slug: "administrativo"
+    },
+    {
+        id: "legal",
+        title: "Servicio Legal",
+        description: "Asesoría legal especializada para proteger su empresa y prevenir contingencias",
+        image: Legal,
+        slug: "legal"
+    },
+    {
+        id: "marketing",
+        title: "Servicio de Marketing",
+        description: "Estrategias de marketing digital orientadas a captar clientes y posicionar su marca",
+        image: Marketing,
+        slug: "marketing"
+    },
+    {
+        id: "informatico",
+        title: "Servicio Informático",
+        description: "Optimización de la infraestructura tecnológica y seguridad de la información.",
+        image: Informatico,
+        slug: "informatico"
+    },
+    {
+        id: "inmobiliario",
+        title: "Servicio Inmobiliario",
+        description: "Asesoría integral en gestión de propiedades, compra, venta y administración.",
+        image: Inmobiliario,
+        slug: "inmobiliario"
+    }
+];
+---
+
+<section id="servicios" class="bg-gray-50 border-t border-b border-gray-200">
+    <div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row">
+
+        <div class="w-full lg:w-1/2 p-10 lg:p-24 border-b lg:border-b-0 lg:border-r border-gray-200 flex flex-col items-center lg:items-start justify-center bg-gray-50/50 relative overflow-hidden group">
+
+            <div class="absolute top-0 right-0 w-32 h-32 bg-accent-ocean/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute bottom-10 left-10 w-12 h-12 border border-brand-deep/10 rounded-full"></div>
+
+            <div class="relative w-full h-24 lg:h-32 mb-12 flex justify-center lg:justify-start">
+                {services.map((service, index) => (
+                        <h2
+                                class={`service-display-title absolute top-0 left-0 w-full text-4xl lg:text-5xl font-extrabold text-brand-deep leading-tight transition-all duration-700 ease-out ${index === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}
+                                data-id={service.id}
+                        >
+                            {service.title}
+                        </h2>
+                ))}
+            </div>
+
+            <div class="relative w-full max-w-[420px] lg:max-w-[460px] aspect-[4/5] rounded-t-[12rem] rounded-b-2xl overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,48,62,0.2)] bg-gray-200 border-[10px] border-white z-10 transition-transform duration-700 group-hover:scale-[1.02]">
+                {services.map((service, index) => (
+                        <div
+                                class={`service-display-img absolute inset-0 w-full h-full transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1) ${index === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-110 pointer-events-none'}`}
+                                data-id={service.id}
+                        >
+                            <Image
+                                    src={service.image}
+                                    alt={service.title}
+                                    width={800}
+                                    height={1000}
+                                    class="w-full h-full object-cover"
+                                    loading={index === 0 ? "eager" : "lazy"}
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-deep/30 to-transparent opacity-60"></div>
+                        </div>
+                ))}
+            </div>
+        </div>
+
+        <div class="w-full lg:w-1/2 flex flex-col bg-gray-50">
+
+            <div class="p-8 lg:px-16 lg:py-12 border-b border-gray-200 flex justify-between items-center group bg-white/50">
+                <span class="text-[11px] font-extrabold text-brand-deep tracking-[0.3em] uppercase">Servicios</span>
+                <span class="w-12 h-[1px] bg-brand-deep/20"></span>
+            </div>
+
+            <div class="p-8 lg:px-16 lg:py-12 flex flex-col gap-4">
+                {services.map((service, index) => {
+                    const num = String(index + 1).padStart(2, '0');
+                    return (
+                            <a
+                                    href={`/servicios/${service.slug}`}
+                                    class={`service-item group relative flex items-start gap-6 cursor-pointer transition-all ${index === 0 ? 'active' : ''}`}
+                                    data-id={service.id}
+                            >
+                            <span class="text-[12px] font-black mt-2 lg:mt-3 transition-colors duration-300 group-[.active]:text-accent-ocean text-gray-400">
+                                {num}
+                            </span>
+
+                                <div class="flex-1 pb-4 lg:pb-8 border-b border-gray-200 group-[.active]:border-brand-deep transition-colors duration-300 relative">
+                                    <div class="flex justify-between items-center">
+                                        <h3 class="text-2xl lg:text-4xl font-bold transition-colors duration-300 group-[.active]:text-brand-deep text-brand-deep/40 group-hover:text-brand-deep">
+                                            {service.title}
+                                        </h3>
+
+                                        <svg class="w-6 h-6 text-accent-ocean opacity-0 -translate-x-4 group-[.active]:opacity-100 group-[.active]:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-sm text-gray-500 mt-2 opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 max-w-md">
+                                        {service.description}
+                                    </p>
+                                </div>
+                            </a>
+                    )
+                })}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function initServicesInteraction() {
+        const serviceItems = document.querySelectorAll('.service-item');
+        const displayTitles = document.querySelectorAll('.service-display-title');
+        const displayImgs = document.querySelectorAll('.service-display-img');
+
+        function updateDisplay(id) {
+            displayTitles.forEach(title => {
+                if (title.getAttribute('data-id') === id) {
+                    title.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                    title.classList.add('opacity-100', 'translate-y-0');
+                } else {
+                    title.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                    title.classList.remove('opacity-100', 'translate-y-0');
+                }
+            });
+
+            displayImgs.forEach(img => {
+                if (img.getAttribute('data-id') === id) {
+                    img.classList.replace('opacity-0', 'opacity-100');
+                    img.classList.replace('scale-110', 'scale-100');
+                } else {
+                    img.classList.replace('opacity-100', 'opacity-0');
+                    img.classList.replace('scale-100', 'scale-110');
+                }
+            });
+
+            serviceItems.forEach(item => {
+                if (item.getAttribute('data-id') === id) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        serviceItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const id = item.getAttribute('data-id');
+                updateDisplay(id);
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', initServicesInteraction);
+</script>

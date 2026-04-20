@@ -1,0 +1,1 @@
+export {default as LogoGcp} from "../assets/logo-gcp.png";

@@ -1,0 +1,203 @@
+---
+import { Image } from 'astro:assets';
+import { Carousel1, Carousel2, Carousel3 } from "../assets";
+
+const slides = [
+    {
+        id: "slide-1",
+        title: "Soluciones integrales para el ",
+        highlight: "crecimiento de tu empresa.",
+        description: "Somos un grupo empresarial con alcance a nivel nacional. Brindamos servicios bajo la modalidad outsourcing o in-house con una metodología orientada a resultados.", // Basado en [cite: 25, 27]
+        image: Carousel1,
+        tabTitle: "01 Integridad",
+    },
+    {
+        id: "slide-2",
+        title: "Tu aliado estratégico en ",
+        highlight: "cada decisión.",
+        description: "Contamos con el respaldo de profesionales altamente calificados y más de 10 años de trayectoria garantizando un impacto real en el éxito de las organizaciones.", // Basado en [cite: 26, 28, 36]
+        image: Carousel2,
+        tabTitle: "02 Experiencia",
+    },
+    {
+        id: "slide-3",
+        title: "Especialización en áreas ",
+        highlight: "clave del negocio.",
+        description: "Consultoría experta en gestión contable, tributaria, legal, marketing, informática e inmobiliaria. Todo el respaldo que su empresa necesita en un solo lugar.", // Basado en [cite: 13-22]
+        image: Carousel3,
+        tabTitle: "03 Especialización",
+    }
+];
+---
+
+<section class="relative w-full min-h-[85vh] lg:min-h-[700px] flex items-center bg-brand-deep overflow-hidden pt-32 pb-32" id="hero-carousel">
+
+    <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center relative z-20">
+
+        <div class="relative h-[280px] lg:h-[350px] w-full flex flex-col justify-center">
+            {slides.map((slide, index) => (
+                    <div
+                            class={`hero-slide-content absolute top-1/2 -translate-y-1/2 left-0 w-full transition-all duration-700 ease-out ${index === 0 ? 'opacity-100 translate-x-0 pointer-events-auto' : 'opacity-0 -translate-x-8 pointer-events-none'}`}
+                            data-index={index}
+                    >
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] mb-6">
+                            {slide.title} {slide.highlight}
+                        </h1>
+                        <p class="text-lg text-gray-300 mb-8 leading-relaxed max-w-lg">
+                            {slide.description}
+                        </p>
+                    </div>
+            ))}
+        </div>
+
+        <div class="relative w-full max-w-[450px] lg:max-w-[550px] mx-auto aspect-square flex items-center justify-center">
+
+            <div class="absolute w-[90%] h-[90%] rounded-full bg-brand-dark right-0 top-0 translate-x-4 -translate-y-4"></div>
+
+            <div class="absolute w-full h-full rounded-full border border-accent-ocean/30 left-0 bottom-0 -translate-x-4 translate-y-4"></div>
+
+            <div class="absolute w-24 h-24 rounded-full bg-brand-base bottom-8 left-0 z-20 shadow-xl"></div>
+
+            <div class="relative w-full max-w-[500px] lg:max-w-[600px] mx-auto aspect-square flex items-center justify-center">
+
+                <div class="absolute w-[110%] h-[110%] bg-accent-ocean/10 rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] animate-[blob_20s_infinite_linear] opacity-50"></div>
+                <div class="absolute w-[100%] h-[100%] border border-white/10 rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] animate-[blob_25s_infinite_linear_reverse]"></div>
+
+                <div class="relative w-full h-full z-10 transition-all duration-1000 ease-in-out"
+                     style="clip-path: url(#abstract-mask);">
+
+                    {slides.map((slide, index) => (
+                            <div
+                                    class={`hero-slide-img absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${index === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}
+                                    data-index={index}
+                            >
+                                <div class="absolute inset-0 bg-brand-deep/20 mix-blend-multiply z-10"></div>
+                                <Image
+                                        src={slide.image}
+                                        alt={slide.title}
+                                        class="w-full h-full object-cover"
+                                        loading={index === 0 ? "eager" : "lazy"}
+                                />
+                            </div>
+                    ))}
+                </div>
+
+
+                <svg width="0" height="0" class="absolute">
+                    <defs>
+                        <clipPath id="abstract-mask" clipPathUnits="objectBoundingBox">
+                            <path d="M0.9,0.5 C0.9,0.75,0.75,0.9,0.5,0.9 C0.25,0.9,0.1,0.75,0.1,0.5 C0.1,0.25,0.25,0.1,0.5,0.1 C0.75,0.1,0.9,0.25,0.9,0.5"></path>
+                            <path d="M0.85,0.35 C0.95,0.5,0.9,0.7,0.75,0.85 C0.6,1,0.4,1,0.25,0.85 C0.1,0.7,0,0.5,0.1,0.3 C0.2,0.1,0.5,0,0.7,0.1 C0.8,0.2,0.8,0.3,0.85,0.35"></path>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full z-30 bg-brand-dark/50 backdrop-blur-sm border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-row justify-center md:justify-start overflow-x-auto no-scrollbar">
+                {slides.map((slide, index) => (
+                        <button
+                                class={`hero-tab relative px-8 py-4 text-left transition-all duration-300 group outline-none min-w-max ${index === 0 ? 'active' : ''}`}
+                                data-index={index}
+                        >
+                            <span class="absolute top-0 left-0 w-full h-[2px] bg-accent-cyan origin-left scale-x-0 transition-transform duration-300 group-[.active]:scale-x-100"></span>
+
+                            <div class="absolute inset-0 bg-white/5 opacity-0 transition-opacity duration-300 group-[.active]:opacity-100 group-hover:opacity-50"></div>
+
+                            <div class="relative z-10 flex flex-col items-center md:items-start">
+                            <span class="block text-[10px] font-bold tracking-[0.2em] uppercase mb-1 transition-colors duration-300 group-[.active]:text-accent-cyan text-gray-500 group-hover:text-gray-400">
+                                {slide.tabTitle.split(' ')[0]}
+                            </span>
+                                <span class="block text-[14px] font-semibold transition-colors duration-300 group-[.active]:text-white text-gray-400 group-hover:text-gray-200">
+                                {slide.tabTitle.split(' ')[1]}
+                            </span>
+                            </div>
+                        </button>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes blob {
+        0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        33% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        66% { border-radius: 40% 60% 60% 40% / 50% 60% 40% 60%; }
+        100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    }
+
+    .animate-bounce-slow {
+        animation: bounce-slow 4s infinite ease-in-out;
+    }
+
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+</style>
+
+<script>
+    function initHeroCarousel() {
+        const imgs = document.querySelectorAll('.hero-slide-img');
+        const contents = document.querySelectorAll('.hero-slide-content');
+        const tabs = document.querySelectorAll('.hero-tab');
+        let currentIndex = 0;
+        const totalSlides = tabs.length;
+        let autoplayInterval;
+
+        function goToSlide(index) {
+            if (index === currentIndex) return;
+
+            // Ocultar actual
+            imgs[currentIndex].classList.replace('opacity-100', 'opacity-0');
+            imgs[currentIndex].classList.replace('scale-100', 'scale-105');
+
+            contents[currentIndex].classList.replace('opacity-100', 'opacity-0');
+            contents[currentIndex].classList.replace('translate-x-0', '-translate-x-8');
+            contents[currentIndex].classList.replace('pointer-events-auto', 'pointer-events-none');
+
+            tabs[currentIndex].classList.remove('active');
+
+            // Mostrar nuevo
+            imgs[index].classList.replace('opacity-0', 'opacity-100');
+            imgs[index].classList.replace('scale-105', 'scale-100');
+
+            contents[index].classList.replace('opacity-0', 'opacity-100');
+            contents[index].classList.replace('-translate-x-8', 'translate-x-0');
+            contents[index].classList.replace('pointer-events-none', 'pointer-events-auto');
+
+            tabs[index].classList.add('active');
+
+            currentIndex = index;
+        }
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                goToSlide(index);
+                resetAutoplay();
+            });
+        });
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                let nextIndex = (currentIndex + 1) % totalSlides;
+                goToSlide(nextIndex);
+            }, 6000);
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayInterval);
+            startAutoplay();
+        }
+
+        if(tabs.length > 0) {
+            startAutoplay();
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', initHeroCarousel);
+</script>

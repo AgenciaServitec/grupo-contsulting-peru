@@ -1,13 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Hero from "../sections/Hero.astro";
+import AboutUs from "../sections/AboutUs.astro";
+import ServicesSection from "../sections/ServicesSection.astro";
+import ContactForm from "../sections/ContactForm.astro";
+import Location from "../sections/Location.astro";
 ---
 
 <Layout
-	title="Grupo Contsulting Perú"
-	description=""
+	title="Inicio | Grupo Contsulting Perú - Soluciones Integrales"
+	description="Convertimos los desafíos de su empresa en oportunidades de crecimiento. Ofrecemos servicios contables, legales, administrativos, de marketing, informáticos e inmobiliarios."
 	image="/"
 >
-	<div class="my-20">
-		<h1>Bienvenidos</h1>
-	</div>
+	<Hero />
+	<AboutUs />
+	<ServicesSection />
+	<ContactForm />
+	<Location />
+
+	<main>
+	</main>
 </Layout>
