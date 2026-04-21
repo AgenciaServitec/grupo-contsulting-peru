@@ -50,7 +50,7 @@ const slides = [
             ))}
         </div>
 
-        <div class="relative w-full max-w-[450px] lg:max-w-[550px] mx-auto aspect-square flex items-center justify-center">
+        <div class="relative w-full max-w-[450px] lg:max-w-[550px] mx-auto aspect-square flex items-center justify-center py-6">
 
             <div class="absolute w-[90%] h-[90%] rounded-full bg-brand-dark right-0 top-0 translate-x-4 -translate-y-4"></div>
 
@@ -79,7 +79,7 @@ const slides = [
                                         loading={index === 0 ? "eager" : "lazy"}
                                 />
                             </div>
-                    ))}
+                    ))}a
                 </div>
 
 
@@ -96,24 +96,24 @@ const slides = [
     </div>
 
     <div class="absolute bottom-0 left-0 w-full z-30 bg-brand-dark/50 backdrop-blur-sm border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-row justify-center md:justify-start overflow-x-auto no-scrollbar">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-row overflow-x-auto no-scrollbar scroll-smooth">
                 {slides.map((slide, index) => (
                         <button
-                                class={`hero-tab relative px-8 py-4 text-left transition-all duration-300 group outline-none min-w-max ${index === 0 ? 'active' : ''}`}
+                                class={`hero-tab relative px-6 py-5 lg:px-10 lg:py-6 text-left transition-all duration-300 group outline-none flex-1 min-w-[140px] lg:min-w-0 border-r border-white/5 last:border-r-0 ${index === 0 ? 'active' : ''}`}
                                 data-index={index}
                         >
                             <span class="absolute top-0 left-0 w-full h-[2px] bg-accent-cyan origin-left scale-x-0 transition-transform duration-300 group-[.active]:scale-x-100"></span>
 
                             <div class="absolute inset-0 bg-white/5 opacity-0 transition-opacity duration-300 group-[.active]:opacity-100 group-hover:opacity-50"></div>
 
-                            <div class="relative z-10 flex flex-col items-center md:items-start">
-                            <span class="block text-[10px] font-bold tracking-[0.2em] uppercase mb-1 transition-colors duration-300 group-[.active]:text-accent-cyan text-gray-500 group-hover:text-gray-400">
-                                {slide.tabTitle.split(' ')[0]}
-                            </span>
-                                <span class="block text-[14px] font-semibold transition-colors duration-300 group-[.active]:text-white text-gray-400 group-hover:text-gray-200">
-                                {slide.tabTitle.split(' ')[1]}
-                            </span>
+                            <div class="relative z-10 flex flex-col items-start">
+                                <span class="block text-[10px] font-bold tracking-[0.2em] uppercase mb-1 transition-colors duration-300 group-[.active]:text-accent-cyan text-gray-500">
+                                    {slide.tabTitle.split(' ')[0]}
+                                </span>
+                                <span class="block text-[12px] lg:text-[14px] font-semibold transition-colors duration-300 group-[.active]:text-white text-gray-400 truncate w-full">
+                                    {slide.tabTitle.split(' ')[1]}
+                                </span>
                             </div>
                         </button>
                 ))}
