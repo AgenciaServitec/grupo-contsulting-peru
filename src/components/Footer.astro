@@ -5,20 +5,20 @@ import { Image } from 'astro:assets';
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
-    { name: "NOSOTROS", href: "#nosotros" },
-    { name: "SERVICIOS", href: "#servicios" },
-    { name: "UBICACIÓN", href: "#ubicacion" },
-    { name: "CONTÁCTENOS", href: "#contacto" },
+    { name: "NOSOTROS", href: "/#nosotros" },
+    { name: "SERVICIOS", href: "/#servicios" },
+    { name: "UBICACIÓN", href: "/#ubicacion" },
+    { name: "CONTÁCTENOS", href: "/#contacto" },
 ];
 ---
 
-<footer class="bg-brand-deep py-16 lg:py-20 relative" id="footer">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col justify-between min-h-[250px]">
+<footer class="bg-brand-deep pt-20 pb-12 relative border-t-[6px] border-accent-cyan" id="footer">
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-20 flex flex-col min-h-[250px]">
 
-        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 mb-16 lg:mb-24">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12 mb-16 border-b border-white/10 pb-16">
 
-            <a href="/" class="flex items-center group">
-                <div class="w-12 h-12 flex items-center justify-center  backdrop-blur-sm transition-all">
+            <a href="/" class="flex items-center bg-white px-6 py-4 rounded-[1.25rem] shadow-lg hover:-translate-y-1 transition-transform duration-300">
+                <div class="w-14 h-14 lg:w-16 lg:h-16 flex items-center justify-center">
                     <Image
                             src={miLogo}
                             alt="Logo Grupo Contsulting Perú"
@@ -26,48 +26,44 @@ const navLinks = [
                     />
                 </div>
                 <div class="flex flex-col ml-3">
-                    <span class="text-white leading-none text-3xl font-sans font-semibold tracking-wide">
-                        Contsulting<span class="font-light font-semibold text-white/70">Perú</span>
+                    <span class="text-brand-deep leading-none text-[28px] lg:text-[32px] font-sans font-semibold tracking-wide">
+                        Contsulting<span class="font-light font-semibold text-brand-deep/70">Perú</span>
                     </span>
                 </div>
             </a>
 
-            <nav class="flex flex-wrap items-center gap-x-12 gap-y-6">
+            <nav class="flex flex-wrap items-center gap-x-10 gap-y-6">
                 {navLinks.map(link => (
-                        <a href={link.href} class="text-[15px] font-semibold tracking-wide text-white hover:text-accent-cyan transition-colors">
+                        <a href={link.href} class="text-[14px] lg:text-[15px] font-bold tracking-wider text-white/90 hover:text-accent-cyan transition-colors uppercase">
                             {link.name}
                         </a>
                 ))}
             </nav>
         </div>
 
-        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 relative">
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-6">
 
-            <div class="flex flex-col gap-2 text-[13px] text-gray-400">
-                <!--<a href="/privacidad" class="hover:text-white transition-colors w-fit">Políticas de Privacidad</a>-->
-                <p>Diseñado por Servitec</p> <p>&copy; {currentYear} Grupo Contsulting Perú</p> </div>
+            <div class="flex flex-col gap-1.5 text-[14px] text-gray-400 text-center lg:text-left order-3 lg:order-1 w-full lg:w-1/3">
+                <p>&copy; {currentYear} Grupo Contsulting Perú.</p>
+                <p>Todos los derechos reservados. Diseñado por <span class="text-white font-medium">Servitec</span></p>
+            </div>
 
-            <!--<div class="lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:bottom-0">-->
-            <!--    <a href="/reclamaciones" class="flex items-center gap-3 text-white hover:text-accent-cyan transition-colors group">-->
-            <!--        <svg class="w-7 h-7 stroke-current" fill="none" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">-->
-            <!--            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />-->
-            <!--            <path d="M8 7h6" />-->
-            <!--            <path d="M8 11h8" />-->
-            <!--        </svg>-->
-            <!--        <span class="text-[14px] font-medium tracking-wide">Libro de Reclamaciones</span>-->
-            <!--    </a>-->
-            <!--</div>-->
-
-            <div class="flex items-center gap-6 lg:pb-1">
-                <a href="https://www.facebook.com/EstudioContableEmpresarial20/" target="_blank" aria-label="Facebook" class="text-white hover:text-accent-cyan transition-colors">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+            <div class="order-2 lg:order-2 w-full lg:w-1/3 flex justify-center">
+                <a href="#" onclick="event.preventDefault()" class="flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-3 rounded-xl transition-all group" title="Libro de Reclamaciones">
+                    <svg class="w-6 h-6 text-white/70 group-hover:text-accent-cyan transition-colors" fill="none" stroke-width="1.5" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
+                    <span class="text-[14px] font-semibold tracking-wide text-white group-hover:text-accent-cyan transition-colors">Libro de Reclamaciones</span>
                 </a>
-                <a href="https://www.linkedin.com/company/ecessac-soluciones-y-servicios-gm/" target="_blank" aria-label="Instagram" class="text-white hover:text-accent-cyan transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </div>
+
+            <div class="flex items-center justify-center lg:justify-end gap-4 order-1 lg:order-3 w-full lg:w-1/3">
+                <a href="https://www.facebook.com/EstudioContableEmpresarial20/" target="_blank" aria-label="Facebook" class="bg-white/5 p-3.5 rounded-full hover:bg-[#1877F2] hover:-translate-y-1 transition-all text-white" title="Síguenos en Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                 </a>
-                <!--<a href="https://www.linkedin.com/company/ecessac-soluciones-y-servicios-gm/" target="_blank" aria-label="LinkedIn" class="text-white hover:text-accent-cyan transition-colors">-->
-                <!--    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>-->
-                <!--</a>-->
+                <a href="https://www.instagram.com/contsulting/" target="_blank" aria-label="Instagram" class="bg-white/5 p-3.5 rounded-full hover:bg-[#E4405F] hover:-translate-y-1 transition-all text-white" title="Síguenos en Instagram">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
             </div>
 
         </div>

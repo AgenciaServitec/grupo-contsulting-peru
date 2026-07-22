@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { Contable, Administrativo, Legal, Marketing, Informatico, Inmobiliario } from "../assets";
+import { Contable, Administrativo, Legal, Marketing, Informatico, Inmobiliario, Educacional } from "../assets";
 
 const services = [
     {
@@ -44,6 +44,13 @@ const services = [
         description: "Asesoría integral en gestión de propiedades, compra, venta y administración.",
         image: Inmobiliario,
         slug: "inmobiliario"
+    },
+    {
+        id: "educacional",
+        title: "Servicio Educacional",
+        description: "Formación integral, capacitación profesional especializada y programas académicos innovadores.",
+        image: Educacional,
+        slug: "educacional"
     }
 ];
 ---

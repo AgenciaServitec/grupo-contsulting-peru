@@ -8,3 +8,4 @@ export {default as Informatico} from "./services/informatico.jpg";
 export {default as Inmobiliario} from "./services/inmobiliario.png";
 export {default as Legal} from "./services/legal.webp";
 export {default as Marketing} from "./services/marketing.webp";
+export {default as Educacional} from "./services/educacional.jpg";

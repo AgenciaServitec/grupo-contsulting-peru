@@ -4,7 +4,8 @@ import {
     Legal,
     Marketing,
     Informatico,
-    Inmobiliario
+    Inmobiliario,
+    Educacional
 } from "../assets";
 
 export const servicesData = [
@@ -103,5 +104,22 @@ export const servicesData = [
             "Orientación estratégica para inversión inmobiliaria]"
         ],
         image: Inmobiliario
+    },
+    {
+        slug: "educacional",
+        title: "Servicio Educacional",
+        description: "Brindamos formación integral y actualización profesional para fortalecer las competencias mediante programas innovadores.",
+        detailsIntro: "Impulsamos el aprendizaje continuo y el perfeccionamiento especializado en diversas modalidades y normativas.",
+        features: [
+            "Cursos, diplomados y programas de especialización (presencial, virtual, semipresencial y a distancia)",
+            "Organización de eventos académicos (talleres, seminarios, conferencias, congresos, foros y webinars)",
+            "Capacitación en materia contable, tributaria, laboral, financiera, auditoría y comercio exterior",
+            "Formación en NIIF, NIC, NIA, contrataciones con el Estado y cumplimiento normativo",
+            "Programas de transformación digital, innovación y gestión empresarial",
+            "Desarrollo de contenidos académicos (libros, manuales, guías, revistas, videos y cursos en línea)",
+            "Implementación de plataformas y recursos educativos digitales (entornos virtuales de aprendizaje)",
+            "Certificación y acreditación académica con emisión de constancias, certificados y diplomas"
+        ],
+        image: Educacional
     }
 ];
